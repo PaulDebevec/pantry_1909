@@ -24,4 +24,13 @@ class RecipeTest < Minitest::Test
     mac_and_cheese.add_ingredient(mac, 8)
     assert_equal ({cheese => 2, mac => 8}), mac_and_cheese.ingredients_required
   end
+
+  def test_it_shows_total_calories
+    cheese = Ingredient.new("Cheese", "C", 100)
+    mac = Ingredient.new("Macaroni", "oz", 30)
+    mac_and_cheese = Recipe.new("Mac and Cheese")
+    mac_and_cheese.add_ingredient(cheese, 2)
+    mac_and_cheese.add_ingredient(mac, 8)
+    assert_equal 440, mac_and_cheese.total_calories
+  end
 end
